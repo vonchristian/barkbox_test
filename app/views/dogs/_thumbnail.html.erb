@@ -1,3 +1,4 @@
+<% index = dog_counter + 1 %>
 <a href="<%= url_for(dog) %>">
   <article>
     <h2 class="dog-name"><%= dog.name %></h2>
@@ -7,3 +8,7 @@
 </a>
 
 <%= render 'like_button', dog: dog %>
+
+<% if index.even? %>
+  <%= image_tag 'ad.jpg', class: "Ad", alt: "Ad" %>
+<% end %>
