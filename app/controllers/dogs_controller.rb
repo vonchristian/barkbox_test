@@ -4,7 +4,9 @@ class DogsController < ApplicationController
   # GET /dogs
   # GET /dogs.json
   def index
-    @pagy, @dogs = pagy(Dog.all, items: 5)
+    last_hour = (Time.zone.now - 1.hour)..Time.zone.now
+    @dogs = Dog.order(likes_count: :desc)
+    @pagy, @dogs = pagy(@dogs, items: 5)
   end
 
   # GET /dogs/1
