@@ -6,7 +6,7 @@
   <% end %>
 
   <p><%= @dog.description %></p>
-
+<%= render 'like_button', dog: @dog %>
 <% if policy(@dog).update? %>
   <%= link_to "Edit #{@dog.name}'s Profile", edit_dog_path %>
 <% end %>
