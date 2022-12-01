@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :ownerships, class_name: 'Ownership', foreign_key: 'owner_id'
   has_many :dogs, through: :ownerships
+  has_many :likes
+  has_many :liked_dogs, through: :likes, source: :dog
 end

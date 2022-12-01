@@ -4,3 +4,11 @@
     <%= image_tag url_for(dog.images.first), class: "dog-photo", alt: "Photo of #{dog.name}" %>
   </article>
 </a>
+
+<% if current_user && (LikePolicy.new(current_user, dog)).create? %>
+  <%= simple_form_for Like.new, url: :likes do |f| %>
+    <%= f.input :dog_id, label: false, input_html: { value: dog.id, hidden: true } %>
+    <%= f.input :user_id, label: false, input_html: { value: current_user.id, hidden: true } %>
+    <%= f.submit 'Like' %>
+  <% end %>
+<% end %>
